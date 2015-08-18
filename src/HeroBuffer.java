@@ -1,7 +1,9 @@
-import java.util.ArrayList;
+
+import java.util.HashSet;
+import java.util.Iterator;
 
 public class HeroBuffer{
-	private ArrayList<DotaHero> AllHero;
+	private HashSet<DotaHero> AllHero;
 	private int Buffer_Size;
 	
 	/*test case*/
@@ -13,15 +15,25 @@ public class HeroBuffer{
 	
 	static DotaHero EarthShaker = new DotaHero("EarthShaker",S,1,_AS__);
 	static DotaHero b = new DotaHero("b",A,5,PASED);
+	static DotaHero c = new DotaHero("b",A,5,PASED);
 	
 	public HeroBuffer(){
-		this.AllHero = new ArrayList<DotaHero>();
+		this.AllHero = new HashSet<DotaHero>();
 		this.Buffer_Size = 0;
 	}
-	public int addHero(DotaHero Hero){
-		if(Buffer_Size < 5){
-			this.AllHero.add(Hero);
+	public void addHero(DotaHero Hero){
+		if(this.AllHero.contains(Hero) == false){
 			Buffer_Size++;
+		}
+		this.AllHero.add(Hero);
+		
+	}
+	public int addHeroToTeam(DotaHero Hero){
+		if(Buffer_Size < 5){
+			if(this.AllHero.contains(Hero) == true){
+				return -1;
+			}
+			this.AllHero.add(Hero);
 			return 1;
 		}
 		else{
@@ -32,12 +44,14 @@ public class HeroBuffer{
 		HeroBuffer buffer = new HeroBuffer();
 		buffer.addHero(EarthShaker);
 		buffer.addHero(b);
-		buffer.addHero(b);
-		buffer.addHero(b);
-		buffer.addHero(b);
-		buffer.addHero(b);
-		buffer.addHero(b);
-		buffer.AllHero.get(0).write_Hero();
+		buffer.addHero(c);
+		buffer.addHero(EarthShaker);
+		Iterator<DotaHero> It = buffer.AllHero.iterator();
+		
+		
+		It.next().write_Hero();
+		It.next().write_Hero();
+		It.next().write_Hero();
 		System.out.println(buffer.Buffer_Size);
 	}
 	

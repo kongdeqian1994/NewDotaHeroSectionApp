@@ -36,6 +36,25 @@ public class DotaHero {
 		this.CarryPoint = hero.CarryPoint;
 		this.Ability = hero.Ability;
 	}
+	/* 
+	 * The new HashCode I write, and it is not necessary
+	 * */
+
+	/*	public boolean equals(Object obj){
+		DotaHero p = (DotaHero) obj;
+		return Name ==p.Name && Type== p.Type && 
+				CarryPoint == p.CarryPoint && Ability.equals(p.Ability);
+	}
+	public int hashCode(){
+		int i = 0;
+		int result = 0;
+		while(i < Name.length()){
+			result = result + (int)Name.charAt(i);
+			i++;
+		}
+		return result;
+	}*/
+	
 	public String getName(){
 		return this.Name;
 	}
