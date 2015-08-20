@@ -48,7 +48,7 @@ public class HeroUI {
 		Uppanel.setSize(800,100);
 		welcomeword.setHorizontalTextPosition(JLabel.LEFT);
 		welcomeword.setFont(new Font("Dialog", Font.BOLD, 30));
-		ImageIcon  dota2picture = new ImageIcon("Dota2_picture.jpg");
+		ImageIcon  dota2picture = new ImageIcon("picture/Dota2_picture.jpg");
 		JLabel dota2_picture = new JLabel(dota2picture);
 		dota2_picture.setSize(70,70);
 		Uppanel.add(dota2_picture);
@@ -72,14 +72,14 @@ public class HeroUI {
 		JCheckBox StrengthHero = new JCheckBox("STRENGTH HERO");
 		StrengthHero.setForeground(Color.RED);
 		Leftpanel.add(StrengthHero);
-		ImageIcon  Strength = new ImageIcon("Strength.jpg");
+		ImageIcon  Strength = new ImageIcon("picture/Strength.jpg");
 		JLabel Strength_picture = new JLabel(Strength);
 		Leftpanel.add(Strength_picture);
 		
 		JCheckBox AGILITY_HERO = new JCheckBox("AGILITY HERO");
 		AGILITY_HERO.setForeground(Color.GREEN);
 		Leftpanel.add(AGILITY_HERO);
-		ImageIcon  Agility = new ImageIcon("Agility.jpg");
+		ImageIcon  Agility = new ImageIcon("picture/Agility.jpg");
 		JLabel Agility_picture = new JLabel(Agility);
 		Leftpanel.add(Agility_picture);
 		
@@ -87,7 +87,7 @@ public class HeroUI {
 		INTELLIGENCE_HERO.setForeground(Color.BLUE);
 		Leftpanel.add(INTELLIGENCE_HERO);
 		Leftpanel.add(INTELLIGENCE_HERO);
-		ImageIcon  Intelligence = new ImageIcon("Intelligence.jpg");
+		ImageIcon  Intelligence = new ImageIcon("picture/Intelligence.jpg");
 		JLabel Intelligence_picture = new JLabel(Intelligence);
 		Leftpanel.add(Intelligence_picture);
 		return Leftpanel;
