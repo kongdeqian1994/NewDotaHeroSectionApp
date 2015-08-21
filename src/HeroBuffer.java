@@ -39,21 +39,84 @@ public class HeroBuffer{
 	
 	public void addAllHero() {
 		try{
+			
 			InputStream in = new FileInputStream(new File("HeroData.txt"));
 		
 			Scanner input = new Scanner(in);
 		
 			while(input.hasNext()){
-				System.out.println(input.next());
+				String name = new String(input.next());
+				String type = new String(input.next());
+				int carrypoint = input.nextInt();
+				int push = input.nextInt();
+				int aoe = input.nextInt();
+				int stun = input.nextInt();
+				int escape = input.nextInt();
+				int slowdown = input.nextInt();
+				if(type.equals("S")){
+					type = new String("STRENGTH");
+				}
+				else if(type.equals("A")){
+					type = new String("AGILITY");
+				}
+				else if(type.equals("I")){
+					type = new String("INTELLIGENCE");
+				}
+				boolean [] ability = new boolean[5];
+				if(push == 1){
+					ability[0] = true; 
+				}
+				else{
+					ability[0] = false;
+				}
+				if(aoe == 1){
+					ability[1] = true; 
+				}
+				else{
+					ability[1] = false;
+				}
+				if(stun == 1){
+					ability[2] = true; 
+				}
+				else{
+					ability[2] = false;
+				}
+				if(escape == 1){
+					ability[3] = true; 
+				}
+				else{
+					ability[3] = false;
+				}
+				if(slowdown == 1){
+					ability[4] = true; 
+				}
+				else{
+					ability[4] = false;
+				}
+				this.AllHero.add(new DotaHero(name,type,carrypoint,ability));
 			}
+			input.close();
 		}
 		catch(Exception e){
-			System.out.println("Do not try to modify the HeroData file's name, It will cause error");
-		}
-		
 			
-		
+			System.out.println("Do not try to modify the HeroData file's name or file's format, It will cause error");
+		}				
 	}
+	
+	public void writeAllHero(){
+		Iterator<DotaHero> it = this.AllHero.iterator();
+		while(it.hasNext()){
+			it.next().write_Hero();
+		}
+	}
+	
+	public void writeAllHero_Name(){
+		Iterator<DotaHero> it = this.AllHero.iterator();
+		while(it.hasNext()){
+			System.out.println(it.next().getName());
+		}
+	}
+	
 	public int addHeroToTeam(DotaHero Hero){
 		if(Buffer_Size < 5){
 			if(this.AllHero.contains(Hero) == true){
@@ -153,6 +216,7 @@ public class HeroBuffer{
 		It.next().write_Hero();
 		System.out.println(buffer.Buffer_Size);*/
 		buffer.addAllHero();
+		buffer.writeAllHero_Name();
 	}
 	
 

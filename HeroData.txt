@@ -1,2 +1,2 @@
-1 2 3 4
-kong
+EarthShaker S 1 0 1 1 0 0
+AP I 3 1 1 1 1 0
