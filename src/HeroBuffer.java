@@ -145,67 +145,151 @@ public class HeroBuffer{
 	
 	public HeroBuffer find_AGILITY_Hero(){
 		HeroBuffer result = new HeroBuffer();
-			
+		Iterator<DotaHero> It = this.AllHero.iterator();
+		DotaHero current;
+		while(It.hasNext()){
+			current = It.next();
+			if(current.getType().equals("AGILITY")){
+				result.addHero(current);
+			}
+		}	
 		return result;
 	}
 	
 	public HeroBuffer find_INTELLIGENCE_Hero(){
 		HeroBuffer result = new HeroBuffer();
-			
+		Iterator<DotaHero> It = this.AllHero.iterator();
+		DotaHero current;
+		while(It.hasNext()){
+			current = It.next();
+			if(current.getType().equals("INTELLIGENCE")){
+				result.addHero(current);
+			}
+		}		
 		return result;
 	}
 	
 	public HeroBuffer find_HardCarry_Hero(){
 		HeroBuffer result = new HeroBuffer();
-			
+		Iterator<DotaHero> It = this.AllHero.iterator();
+		DotaHero current;
+		while(It.hasNext()){
+			current = It.next();
+			if(current.getCarryPoint() == 5){
+				result.addHero(current);
+			}
+		}	
 		return result;
 	}
 	
 	public HeroBuffer find_MidlineCarry_Hero(){
 		HeroBuffer result = new HeroBuffer();
-			
+		Iterator<DotaHero> It = this.AllHero.iterator();
+		DotaHero current;
+		while(It.hasNext()){
+			current = It.next();
+			if(current.getCarryPoint() == 4){
+				result.addHero(current);
+			}
+		}		
 		return result;
 	}
 	
 	public HeroBuffer find_Offline_Hero(){
 		HeroBuffer result = new HeroBuffer();
-			
+		Iterator<DotaHero> It = this.AllHero.iterator();
+		DotaHero current;
+		while(It.hasNext()){
+			current = It.next();
+			if(current.getCarryPoint() == 3){
+				result.addHero(current);
+			}
+		}		
 		return result;
 	}
 	
 	public HeroBuffer find_junglesupport_Hero(){
 		HeroBuffer result = new HeroBuffer();
-			
+		Iterator<DotaHero> It = this.AllHero.iterator();
+		DotaHero current;
+		while(It.hasNext()){
+			current = It.next();
+			if(current.getCarryPoint() == 2){
+				result.addHero(current);
+			}
+		}		
 		return result;
 	}
 	public HeroBuffer find_hardsupport_Hero(){
 		HeroBuffer result = new HeroBuffer();
-			
+		Iterator<DotaHero> It = this.AllHero.iterator();
+		DotaHero current;
+		while(It.hasNext()){
+			current = It.next();
+			if(current.getCarryPoint() == 1){
+				result.addHero(current);
+			}
+		}		
 		return result;
 	}
 	public HeroBuffer find_Push_Hero(){
 		HeroBuffer result = new HeroBuffer();
-			
+		Iterator<DotaHero> It = this.AllHero.iterator();
+		DotaHero current;
+		while(It.hasNext()){
+			current = It.next();
+			if(current.has_Push() == true){
+				result.addHero(current);
+			}
+		}		
 		return result;
 	}
 	public HeroBuffer find_AOE_Hero(){
 		HeroBuffer result = new HeroBuffer();
-			
+		Iterator<DotaHero> It = this.AllHero.iterator();
+		DotaHero current;
+		while(It.hasNext()){
+			current = It.next();
+			if(current.has_AOE() == true){
+				result.addHero(current);
+			}
+		}	
 		return result;
 	}
 	public HeroBuffer find_Stun_Hero(){
 		HeroBuffer result = new HeroBuffer();
-			
+		Iterator<DotaHero> It = this.AllHero.iterator();
+		DotaHero current;
+		while(It.hasNext()){
+			current = It.next();
+			if(current.has_Stun() == true){
+				result.addHero(current);
+			}
+		}	
 		return result;
 	}
 	public HeroBuffer find_Escape_Hero(){
 		HeroBuffer result = new HeroBuffer();
-			
+		Iterator<DotaHero> It = this.AllHero.iterator();
+		DotaHero current;
+		while(It.hasNext()){
+			current = It.next();
+			if(current.has_Escape() == true){
+				result.addHero(current);
+			}
+		}	
 		return result;
 	}
 	public HeroBuffer find_SlowDown_Hero(){
 		HeroBuffer result = new HeroBuffer();
-			
+		Iterator<DotaHero> It = this.AllHero.iterator();
+		DotaHero current;
+		while(It.hasNext()){
+			current = It.next();
+			if(current.has_SlowDown() == true){
+				result.addHero(current);
+			}
+		}	
 		return result;
 	}
 	
