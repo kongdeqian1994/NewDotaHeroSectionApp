@@ -132,7 +132,14 @@ public class HeroBuffer{
 	
 	public HeroBuffer find_STRENGTH_Hero(){
 		HeroBuffer result = new HeroBuffer();
-			
+		Iterator<DotaHero> It = this.AllHero.iterator();
+		DotaHero current;
+		while(It.hasNext()){
+			current = It.next();
+			if(current.getType().equals("STRENGTH")){
+				result.addHero(current);
+			}
+		}
 		return result;
 	}
 	
@@ -216,7 +223,8 @@ public class HeroBuffer{
 		It.next().write_Hero();
 		System.out.println(buffer.Buffer_Size);*/
 		buffer.addAllHero();
-		buffer.writeAllHero_Name();
+		//buffer.writeAllHero_Name();
+		buffer.find_STRENGTH_Hero().writeAllHero_Name();
 	}
 	
 

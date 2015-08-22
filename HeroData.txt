@@ -1,2 +1,5 @@
 EarthShaker S 1 0 1 1 0 0
 AP I 3 1 1 1 1 0
+EarthShaker1 S 1 0 1 1 0 0
+EarthShaker2 S 1 0 1 1 0 0
+EarthShaker A 1 0 1 1 0 0

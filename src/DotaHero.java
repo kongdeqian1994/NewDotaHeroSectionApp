@@ -84,6 +84,51 @@ public class DotaHero {
 	public boolean[] getAbility(){
 		return this.Ability;
 	}
+	
+	public boolean has_Push(){
+		if(this.Ability[0] == true){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+	
+	public boolean has_AOE(){
+		if(this.Ability[1] == true){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+	
+	public boolean has_Stun(){
+		if(this.Ability[2] == true){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+	
+	public boolean has_Escape(){
+		if(this.Ability[3] == true){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+	
+	public boolean has_SlowDown(){
+		if(this.Ability[4] == true){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
 	public void write_Hero(){
 		System.out.println("Name: " + this.Name );
 		System.out.println("Type: " + this.Type);
@@ -106,6 +151,7 @@ public class DotaHero {
 		}
 			
 	}
+	/*testing*/
 	public static void main(String args[]){
 		boolean [] test = {false,true,true,false,false};
 		DotaHero EarthShaker = new DotaHero("EarthShaker",S,5,test);
