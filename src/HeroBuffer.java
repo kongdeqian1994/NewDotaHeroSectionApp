@@ -103,6 +103,9 @@ public class HeroBuffer{
 		}				
 	}
 	
+	public int get_BufferSize(){
+		return this.Buffer_Size;
+	}
 	public void writeAllHero(){
 		Iterator<DotaHero> it = this.AllHero.iterator();
 		while(it.hasNext()){
@@ -117,18 +120,6 @@ public class HeroBuffer{
 		}
 	}
 	
-	public int addHeroToTeam(DotaHero Hero){
-		if(Buffer_Size < 5){
-			if(this.AllHero.contains(Hero) == true){
-				return -1;
-			}
-			this.AllHero.add(Hero);
-			return 1;
-		}
-		else{
-			return -1;
-		}
-	}
 	
 	public HeroBuffer find_STRENGTH_Hero(){
 		HeroBuffer result = new HeroBuffer();
