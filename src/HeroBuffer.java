@@ -8,8 +8,8 @@ import java.util.Iterator;
 import java.util.Scanner;
 
 public class HeroBuffer{
-	private HashSet<DotaHero> AllHero;
-	private int Buffer_Size;
+	protected HashSet<DotaHero> AllHero;
+	protected int Buffer_Size;
 	
 	/*test case*/
 	public static final String S = "STRENGTH";
@@ -94,6 +94,7 @@ public class HeroBuffer{
 					ability[4] = false;
 				}
 				this.AllHero.add(new DotaHero(name,type,carrypoint,ability));
+				this.Buffer_Size++;
 			}
 			input.close();
 		}
