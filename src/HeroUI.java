@@ -6,6 +6,7 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.lang.reflect.Array;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -14,17 +15,27 @@ import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 public class HeroUI {
 	JFrame MainUI = new JFrame("HeroSelection");
-	JPanel Downpanel = new JPanel();
-	JPanel Rightpanel = new JPanel();
-	JPanel Midpanel = new JPanel();
 	JLabel welcomeword = new JLabel("Welcome to HeroSelection V1.1");
+	JPanel Uppanel;
+	JPanel Leftpanel;
+	JScrollPane Midpanel;
+	JPanel Downpanel;
+	JPanel Rightpanel;
+	JTextArea DownText;
 	HeroBuffer Main_buffer = new HeroBuffer();
+	// the FLAG array relate to the Hero Type and Hero Ability
+	boolean START = false;
+	boolean STOP = true;
+	boolean [] FLAG = new boolean[8];
+	
 	public HeroUI(){
 		
-		
 		Main_buffer.addAllHero();
+		this.setFLAG();
 		MainUI.setSize(100, 600);
 		MainUI.setLocationRelativeTo(null);
 		MainUI.setVisible(true);
@@ -32,9 +43,11 @@ public class HeroUI {
 		MainUI.setResizable(false);
 		// That is the end of Left panel
 		
-		
-		JPanel Uppanel = MakeUppanel();
-		JPanel Leftpanel = MakeLeftpanel();
+		Uppanel = MakeUppanel();
+		Leftpanel = MakeLeftpanel();
+		Midpanel = MakeMidpanel();
+		Downpanel = MakeDownpanel();
+		Rightpanel = MakeRightpanel();
 		MainUI.add(Uppanel, BorderLayout.NORTH);
 		MainUI.add(Downpanel, BorderLayout.SOUTH);
 		MainUI.add(Midpanel, BorderLayout.CENTER);
@@ -42,10 +55,15 @@ public class HeroUI {
 		MainUI.add(Rightpanel, BorderLayout.EAST);
 		MainUI.pack();
 		//That is the end of MainUI part
-		
+	  
 		
 		
 	
+	}
+	private void setFLAG(){
+		for(int i = 0; i < this.FLAG.length; i++){
+			this.FLAG[i] = false;
+		}
 	}
 	//that is the method to make Uppanel
 	private JPanel MakeUppanel(){
@@ -59,16 +77,39 @@ public class HeroUI {
 		dota2_picture.setSize(70,70);
 		Uppanel.add(dota2_picture);
 		Uppanel.add(welcomeword);
-		Uppanel.add(new JButton("Start"));
-		Uppanel.add(new JButton("Reset"));
-		Uppanel.add(new JButton("Rechoose"));
+		JButton Start = new JButton("Start");
+		Start.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+
+		});
+		JButton Reset = new JButton("Reset");
+		Reset.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				setFLAG();
+				DownText.setText("Heroes Characteristic: ");
+			}
+
+		});
+		// need to add listener after I finish the team selection part
+		JButton Rechoose = new JButton("Rechoose");
+		Rechoose.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+
+		});
+		Uppanel.add(Start);
+		Uppanel.add(Reset);
+		Uppanel.add(Rechoose);
 		return Uppanel;
 	}
 	//that is the method to make leftpanel
 	private JPanel MakeLeftpanel()
 	{
 		JPanel Leftpanel = new JPanel();
-		Leftpanel.setLayout(new GridLayout(10,2));
+		Leftpanel.setLayout(new GridLayout(11,2));
 		JLabel HeroType = new JLabel("Hero Type");
 		HeroType.setFont(new Font("Times New Rome", Font.BOLD, 20));
 		Leftpanel.add(HeroType);
@@ -77,6 +118,15 @@ public class HeroUI {
 
 		
 		JButton StrengthHero = new JButton("STRENGTH HERO");
+		StrengthHero.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				if(FLAG[0] == false){
+					FLAG[0] = true;
+					DownText.append("Strength ");
+				}
+			}
+
+		});
 		StrengthHero.setForeground(Color.RED);
 		StrengthHero.setBorder(BorderFactory.createRaisedBevelBorder());
 		Leftpanel.add(StrengthHero);
@@ -86,6 +136,15 @@ public class HeroUI {
 		
 		
 		JButton AGILITY_HERO = new JButton("AGILITY HERO");
+		AGILITY_HERO.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				if(FLAG[1] == false){
+					FLAG[1] = true;
+					DownText.append("Agility ");
+				}
+			}
+
+		});
 		AGILITY_HERO.setBorder(BorderFactory.createRaisedBevelBorder());
 		AGILITY_HERO.setForeground(Color.GREEN);
 		Leftpanel.add(AGILITY_HERO);
@@ -95,6 +154,15 @@ public class HeroUI {
 		
 		
 		JButton INTELLIGENCE_HERO = new JButton("INTELLIGENCE HERO");
+		INTELLIGENCE_HERO.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				if(FLAG[2] == false){
+					FLAG[2] = true;
+					DownText.append("Intelligence ");
+				}
+			}
+
+		});
 		INTELLIGENCE_HERO.setForeground(Color.BLUE);
 		INTELLIGENCE_HERO.setBorder(BorderFactory.createRaisedBevelBorder());
 		Leftpanel.add(INTELLIGENCE_HERO);
@@ -110,6 +178,15 @@ public class HeroUI {
 		Leftpanel.add(Empty1);
 		
 		JButton Push_Button = new JButton("Push");
+		Push_Button.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				if(FLAG[3] == false){
+					FLAG[3] = true;
+					DownText.append("Push ");
+				}
+			}
+
+		});
 		Push_Button.setForeground(Color.BLUE);
 		Push_Button.setBorder(BorderFactory.createRaisedBevelBorder());
 		Leftpanel.add(Push_Button);
@@ -121,7 +198,10 @@ public class HeroUI {
 		JButton AOE_Button = new JButton("AOE");
 		AOE_Button.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
-				Main_buffer = Main_buffer.find_AOE_Hero();
+				if(FLAG[4] == false){
+					FLAG[4] = true;
+					DownText.append("AOE ");
+				}
 			}
 
 		});
@@ -134,6 +214,15 @@ public class HeroUI {
 		
 		
 		JButton Stun_Button = new JButton("Stun");
+		Stun_Button.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				if(FLAG[5] == false){
+					FLAG[5] = true;
+					DownText.append("Stun ");
+				}
+			}
+
+		});
 		Stun_Button.setForeground(Color.BLUE);
 		Stun_Button.setBorder(BorderFactory.createRaisedBevelBorder());
 		Leftpanel.add(Stun_Button);
@@ -143,6 +232,15 @@ public class HeroUI {
 		
 		
 		JButton Escape_Button = new JButton("Escape");
+		Escape_Button.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				if(FLAG[6] == false){
+					FLAG[6] = true;
+					DownText.append("Escape ");
+				}
+			}
+
+		});
 		Escape_Button.setForeground(Color.BLUE);
 		Escape_Button.setBorder(BorderFactory.createRaisedBevelBorder());
 		Leftpanel.add(Escape_Button);
@@ -151,6 +249,15 @@ public class HeroUI {
 		Leftpanel.add(Escape_Label);
 		
 		JButton SlowDown_Button = new JButton("SlowDown");
+		SlowDown_Button.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e) {
+				if(FLAG[7] == false){
+					FLAG[7] = true;
+					DownText.append("SlowDown ");
+				}
+			}
+
+		});
 		SlowDown_Button.setForeground(Color.BLUE);
 		SlowDown_Button.setBorder(BorderFactory.createRaisedBevelBorder());
 		Leftpanel.add(SlowDown_Button);
@@ -158,18 +265,40 @@ public class HeroUI {
 		JLabel SlowDown_Label = new JLabel(SlowDown_Picture);
 		Leftpanel.add(SlowDown_Label);
 		
+		JLabel Status = new JLabel("Selection Status");
+		Status.setFont(new Font("Times New Rome", Font.BOLD, 20));
+		Leftpanel.add(Status);
 		return Leftpanel;
 	}
 	private JPanel MakeRightpanel()
 	{
+		JPanel Rightpanel = new JPanel();
 		return Rightpanel;
 	}
-	private JPanel MakeMidpanel()
+	private JScrollPane MakeMidpanel()
 	{
-		return Midpanel;
+		JTextArea text = new JTextArea(30,45);
+		JScrollPane pane = new JScrollPane(text);
+		text.setText(null);
+		text.setEnabled(false);
+		text.setLineWrap(true);
+		text.setFont(new Font("Times New Rome", Font.BOLD, 15));
+		text.setDisabledTextColor(Color.black);
+		
+		return pane;
 	}
 	private JPanel MakeDownpanel()
 	{
+		JPanel Downpanel = new JPanel();
+		DownText = new JTextArea(2,45);
+		DownText.setText(null);
+		DownText.setEnabled(false);
+		DownText.setLineWrap(true);
+		DownText.setFont(new Font("Times New Rome", Font.BOLD, 12));
+		DownText.setDisabledTextColor(Color.black);
+		DownText.append("Heroes Characteristic: ");
+		
+		Downpanel.add(DownText);
 		return Downpanel;
 	}
 	public static void main(String args[]){
