@@ -29,6 +29,10 @@ public class HeroBuffer{
 		this.Buffer_Size = 0;
 	}
 	
+	public Iterator<DotaHero> get_It(){
+		
+		return this.AllHero.iterator();
+	}
 	public void addHero(DotaHero Hero){
 		if(this.AllHero.contains(Hero) == false){
 			Buffer_Size++;

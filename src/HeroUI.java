@@ -1,17 +1,15 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.lang.reflect.Array;
+import java.util.Iterator;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -26,6 +24,7 @@ public class HeroUI {
 	JPanel Downpanel;
 	JPanel Rightpanel;
 	JTextArea DownText;
+	JTextArea MidText;
 	HeroBuffer Main_buffer = new HeroBuffer();
 	// the FLAG array relate to the Hero Type and Hero Ability
 	boolean START = false;
@@ -65,6 +64,34 @@ public class HeroUI {
 			this.FLAG[i] = false;
 		}
 	}
+	
+	private HeroBuffer BufferResult(){
+		if(FLAG[0] == true){
+			Main_buffer = Main_buffer.find_STRENGTH_Hero();
+		}
+		if(FLAG[1] ==  true){
+			Main_buffer = Main_buffer.find_AGILITY_Hero();
+		}
+		if(FLAG[2] == true){
+			Main_buffer = Main_buffer.find_INTELLIGENCE_Hero();
+		}
+		if(FLAG[3] == true){
+			Main_buffer = Main_buffer.find_Push_Hero();
+		}
+		if(FLAG[4] == true){
+			Main_buffer = Main_buffer.find_AOE_Hero();
+		}
+		if(FLAG[5] == true){
+			Main_buffer = Main_buffer.find_Stun_Hero();
+		}
+		if(FLAG[6] == true){
+			Main_buffer = Main_buffer.find_Escape_Hero();
+		}
+		if(FLAG[7] == true){
+			Main_buffer = Main_buffer.find_SlowDown_Hero();
+		}
+		return Main_buffer;
+	}
 	//that is the method to make Uppanel
 	private JPanel MakeUppanel(){
 		JPanel Uppanel = new JPanel();
@@ -80,7 +107,12 @@ public class HeroUI {
 		JButton Start = new JButton("Start");
 		Start.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e) {
-				
+				Main_buffer = BufferResult();
+				Iterator<DotaHero> it = Main_buffer.get_It();
+				while(it.hasNext()){
+					MidText.append(it.next().getName());
+					MidText.append("    ");
+				}
 			}
 
 		});
@@ -89,6 +121,9 @@ public class HeroUI {
 			public void actionPerformed(ActionEvent e) {
 				setFLAG();
 				DownText.setText("Heroes Characteristic: ");
+				MidText.setText("");
+				Main_buffer = new HeroBuffer();
+				Main_buffer.addAllHero();
 			}
 
 		});
@@ -277,13 +312,13 @@ public class HeroUI {
 	}
 	private JScrollPane MakeMidpanel()
 	{
-		JTextArea text = new JTextArea(30,45);
-		JScrollPane pane = new JScrollPane(text);
-		text.setText(null);
-		text.setEnabled(false);
-		text.setLineWrap(true);
-		text.setFont(new Font("Times New Rome", Font.BOLD, 15));
-		text.setDisabledTextColor(Color.black);
+		MidText = new JTextArea(30,45);
+		JScrollPane pane = new JScrollPane(MidText);
+		MidText.setText(null);
+		MidText.setEnabled(false);
+		MidText.setLineWrap(true);
+		MidText.setFont(new Font("Times New Rome", Font.BOLD, 15));
+		MidText.setDisabledTextColor(Color.black);
 		
 		return pane;
 	}
