@@ -8,11 +8,11 @@ public class DotaHero {
 	private int CarryPoint;
 	/* the carry point is from 1 to 5*/
 	/**
-	 * 5 is the hard carry
-	 * 4 is mid line carry
+	 * 1 is the hard carry
+	 * 2 is mid line carry
 	 * 3 is offline
-	 * 2 is jungle support or carry support
-	 * 1 is the hard support
+	 * 4 is jungle support or carry support
+	 * 5 is the hard support
 	 */
 	private boolean [] Ability;
 	/**
@@ -66,15 +66,15 @@ public class DotaHero {
 	}
 	public String getHeroPosition(){
 		switch(this.CarryPoint){
-		case 5:
+		case 1:
 			return "This Hero is Hard Carry";
-		case 4:
+		case 2:
 			return "This Hero is Mid Line Carry";
 		case 3:
 			return "This Hero is Offlane Hero";
-		case 2:
+		case 4:
 			return "This Hero is Jungle or Carry Support";
-		case 1:
+		case 5:
 			return "This Hero is Hard Support";
 		
 		}
